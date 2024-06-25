@@ -5,7 +5,8 @@ export default function Navbar(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">
-      <a className="navbar-brand" href="/">{props.title}</a>//enter navbar title using props
+      <a className="navbar-brand" href="/">{props.title}</a>
+      {/* enter navbar title using props */}
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -22,7 +23,8 @@ export default function Navbar(props) {
         </ul>
         <form className="d-flex">
           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success" type="submit" >{props.find}</button>//enter button name using props
+          <button className="btn btn-outline-success" type="submit" >{props.find}</button> 
+          {/* enter button name using props */}
         </form>
       </div>
     </div>
@@ -31,11 +33,14 @@ export default function Navbar(props) {
 }
 
 Navbar.propTypes = {
-  title: PropTypes.string.isRequired,//it must enter props
-  find: PropTypes.string,//set the type of props like string number boolen
+  // it must enter props
+  title: PropTypes.string.isRequired,
+  //set the type of props like string number boolen
+  find: PropTypes.string,
 };
 
-// Navbar.defaultProps= {
-//   title: "set title here",//if we not enter props this is defalut props
-//   find:"are you want find some thing",
-// };
+ Navbar.defaultProps= {
+  //if we not enter props this is defalut props
+   title: "set title here",
+   find:"are you want find some thing",
+ };
