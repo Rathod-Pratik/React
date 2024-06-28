@@ -1,12 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+// import props from 'prop-types'
 
 export default function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav  className= {`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
     <div className="container-fluid">
-      <a className="navbar-brand" href="/">{props.title}</a>
-      {/* enter navbar title using props */}
+      <a className="navbar-brand " href="/">{props.title}</a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -21,25 +20,23 @@ export default function Navbar(props) {
           </li>
          
         </ul>
-        {/* <form className="d-flex">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success" type="submit" >{props.find}</button> 
-        </form> */}
+        <button type="button" onClick={props.togglemode} className={`btn  btn-${props.mode==='dark'?'light':'dark'} ${props.mode==='dark'?'text-light bg-dark':'text-dark bg-light'} `}>{props.btn}</button>
       </div>
     </div>
   </nav>
   )
 }
 
-Navbar.propTypes = {
-  // it must enter props
-  title: PropTypes.string.isRequired,
-  //set the type of props like string number boolen
-  find: PropTypes.string,
-};
+ // Navbar.propTypes = {
+ //    it must enter props
+ //   title: PropTypes.string.isRequired,
 
- Navbar.defaultProps= {
-  //if we not enter props this is defalut props
-   title: "set title here",
-   find:"are you want find some thing",
- };
+ //   set the type of props like string number boolen
+ //   find: PropTypes.string,
+ // };
+
+//  Navbar.defaultProps= {
+//   //if we not enter props this is defalut props
+//    title: "set title here",
+//    find:"are you want find some thing",
+//  };

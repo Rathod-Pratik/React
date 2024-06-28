@@ -1,35 +1,61 @@
 import React from "react";
 import { useState } from "react";
 
-export default function Text_editor(props) {
+export default function TextForm(props) {
   const [text, setText] = useState("NewText");
 
-  const [isBold, setIsBold] = useState(false);
-  const [isitalic, setitalic] = useState(false);
+  // State for the bold style
+  const [mybold, setBold] = useState({
+    fontWeight: "normal",
+  });
+  // State for the italic style
+  const [myitalic, setitalic] = useState({
+    fontStyle: "normal",
+  });
 
+  // Function to toggle bold text style
   function boldText() {
-    setIsBold(!isBold);
+    if (mybold.fontWeight === "normal") {
+      setBold({
+        fontWeight: "bold",
+      });
+    } else {
+      setBold({
+        fontWeight: "normal",
+      });
+    }
   }
-
+  // Function to toggle italic text style
   function italicText() {
-    setitalic(!isitalic);
+    if (myitalic.fontStyle === "normal") {
+      setitalic({
+        fontStyle: "italic",
+      });
+    } else {
+      setitalic({
+        fontStyle: "normal",
+      });
+    }
   }
 
+  // Function to handle text change in the textarea
   function changetext(event) {
-    console.log("you click this btn");
     setText(event.target.value);
   }
 
+  // Function to convert text to uppercase
   function touppercase() {
     let NewText = text.toUpperCase();
     setText(NewText);
   }
 
+  // Function to convert text to lowercase
   function tolowercase() {
     let NewText = text.toLowerCase();
     setText(NewText);
   }
 
+  // Function to clear the text
   function clearText() {
     let NewText = "";
     setText(NewText);
@@ -38,20 +64,22 @@ export default function Text_editor(props) {
   return (
     <>
       <div className="container">
-        <h2>{props.title}</h2>
-        <div class="mb-3">
+        <h2 className="text-center" style={{color:props.mode==='dark'?'white':'black'}}>Word Editor</h2>
+        <div className="mb-3">
           <textarea
-            className={`form-control ${isBold ? "bold" : ""} ${
-              isitalic ? "italic" : ""}`}
+          style={{...mybold, ...myitalic,color:props.mode==='dark'?'white':'black',backgroundColor:props.mode==='dark'?'gray':'white'}}
+            className="form-control"
             rows="8"
             value={text}
             onChange={changetext}
           ></textarea>
+        </div>
+        <div className="d-flex justify-content-center">
           <button className="btn btn-primary m-2" onClick={touppercase}>
-            ToUppercase
+            To Uppercase
           </button>
           <button className="btn btn-primary m-2" onClick={tolowercase}>
-            Tolowercase
+            To lowercase
           </button>
           <button className="btn btn-primary m-2" onClick={clearText}>
             Clear text
@@ -65,15 +93,14 @@ export default function Text_editor(props) {
         </div>
       </div>
       <div className="container">
-        <h2>Count</h2>
-        <p>
-          there are {text.split(" ").length - 1} Words and {text.length}{" "}
-          character in this paragraph <br /> It takes{" "}
-          {0.25 * text.split(" ").length - 0.25}seconds to read
+        <h2 className="text-center" style={{color:props.mode==='dark'?'white':'black'}}>Count</h2>
+        <p className="text-center" style={{color:props.mode==='dark'?'white':'black'}}>
+          there are {text.split(" ").filter(Boolean).length} Words and{" "}
+          {text.length} characters in this paragraph <br /> It takes{" "}
+          {0.25 * text.split(" ").filter(Boolean).length} seconds to read
         </p>
-        <h2>Preview</h2>
-        <p className={` ${isBold ? "bold" : ""} ${
-              isitalic ? "italic" : ""}`}>{text}</p>
+        <h2 className="text-center" style={{color:props.mode==='dark'?'white':'black'}} >Preview</h2>
+        <p  className="text-center" style={{ ...mybold, ...myitalic,color:props.mode==='dark'?'white':'black' }}>{text}</p>
       </div>
     </>
   );
