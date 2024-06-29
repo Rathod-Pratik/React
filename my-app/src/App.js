@@ -14,7 +14,7 @@ function App() {
     })
     setTimeout(() => {
       setalert(null)
-    },2000);
+    },2500);
   }
   function togglemode() {
     if(mode==='light'){
@@ -22,12 +22,14 @@ function App() {
       setText('Light');
       document.body.style.backgroundColor='#1f3b51';
       showAlert('success',' successfully turn on dark mode')
+      document.title='Rathod Pratik - Home Dark mode'
     }
     else{
       setmode('light');
       setText('Dark');
       document.body.style.backgroundColor='white';
       showAlert('success',' successfully turn on light mode')
+      document.title='Rathod Pratik - Home Light mode'
     }
   }
   return (
