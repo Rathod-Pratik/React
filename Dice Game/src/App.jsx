@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Home from './Component/Home/Home'
+import Gameplay from './Component/Gameplay/Gameplay'
 
 const App = () => {
+  const [start,setstart]=useState(false);
+  const Toggle=()=>{
+    setstart((prev)=>(!prev));
+  }
   return (
     <div>
-      <Home/>
+      {start? <Gameplay/>  : <Home toggle={Toggle}/>}
     </div>
   )
 }
