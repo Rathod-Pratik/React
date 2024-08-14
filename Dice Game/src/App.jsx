@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import Home from './Component/Home/Home'
-import Gameplay from './Component/Gameplay/Gameplay'
+import Home from './Component/Home'
+import Gameplay from './Component/Gameplay'
+import './reset.css';
 
 const App = () => {
-  const [start,setstart]=useState(false);
+  const [start,setstart]=useState(true);
   const Toggle=()=>{
     setstart((prev)=>(!prev));
   }
