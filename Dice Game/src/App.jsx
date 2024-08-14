@@ -4,7 +4,7 @@ import Gameplay from './Component/Gameplay'
 import './reset.css';
 
 const App = () => {
-  const [start,setstart]=useState(true);
+  const [start,setstart]=useState(false);
   const Toggle=()=>{
     setstart((prev)=>(!prev));
   }

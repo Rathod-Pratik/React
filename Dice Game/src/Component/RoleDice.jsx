@@ -1,20 +1,20 @@
-import { useState } from "react";
 import styled from "styled-components";
+import { Button, OutlineButton } from "../Styled/button";
 
-const RoleDice = () => {
-  const [currentDice, setCurrentDice] = useState(1);
-  const getRandomNumber = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min);
-  };
-  const random = () => {
-    const number = getRandomNumber(1, 7);
-    setCurrentDice(number);
-  };
+const RoleDice = ({showrules,setshowrules,Resetscore, rollDice, currentDice }) => {
   return (
-    <RollDice>
-      <img src={`/Image/dice_${currentDice}.png`} onClick={random} alt="Dice" />
-      <p>Click on Dice to roll</p>
-    </RollDice>
+    <>
+      <RollDice>
+        <div onClick={rollDice}>
+          <img src={`Image/dice_${currentDice}.png`} alt="Dice" />
+        </div>
+        <p>Click on Dice to roll</p>
+      <div className="btn">
+        <OutlineButton onClick={Resetscore}>Reset Score</OutlineButton>
+        <Button onClick={() => setshowrules((prev) => !prev)}>{showrules ?"Hide":"Show"} Rules</Button>
+      </div>
+      </RollDice>
+    </>
   );
 };
 
@@ -31,8 +31,17 @@ const RollDice = styled.div`
     margin: auto;
     font-weight: bold;
   }
-  img {
+  .btn {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  div {
     margin: auto;
+  }
+  img {
     height: 250px;
     width: 250px;
   }

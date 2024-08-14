@@ -1,14 +1,19 @@
 import styled from "styled-components"
-import { useState } from "react";
-const Number = () => {
+const Number = ({seterror,error,selectnumber, setselectnumber}) => {
     const number = [1, 2, 3, 4, 5, 6];
-  const [color, setcolor] = useState();
+    const selectedNumber=(value)=>{
+      setselectnumber(value);
+      seterror("");
+    }
   return (
     <SelectNumber>
        <div className="flex">
+        <div className="error">
+      <p>{error}</p>
+        </div>
           <div className="number">
             {number.map((value, i) => (
-              <Box key={i} onClick={() => setcolor(value)} isvalue={value == color}>
+              <Box key={i} onClick={() => selectedNumber(value)} isvalue={value == selectnumber}>
               {value}
             </Box>
             ))}
@@ -24,7 +29,12 @@ const Number = () => {
 export default Number
 
 const SelectNumber = styled.div`
-
+.error{
+  display: flex;
+    justify-content: end;
+    color: red;
+    font-size: 24px;
+}
   .number {
     display: flex;
     flex-direction: row;
