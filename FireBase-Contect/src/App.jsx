@@ -4,13 +4,13 @@ import { FiSearch } from "react-icons/fi";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/FireBase";
-import { HiOutlineUserCircle } from "react-icons/hi";
+import ContectCard from "./Components/ContectCard";
 
 const App = () => {
   const [contects, setcontects] = useState([]);
   useEffect(() => {
     const getcontects = async () => {
-    try{
+      try {
         const contectRef = collection(db, "Contect");
         const contectsSnapshot = await getDocs(contectRef);
         const ContectList = contectsSnapshot.docs.map((doc) => {
@@ -20,8 +20,7 @@ const App = () => {
           };
         });
         setcontects(ContectList);
-      } catch (error) {
-      }
+      } catch (error) {}
     };
     getcontects();
   }, []);
@@ -43,13 +42,7 @@ const App = () => {
       </div>
       <div>
         {contects.map((contect) => (
-          <div key={contect.id}>
-            <HiOutlineUserCircle />
-            <div className="text-white">
-              <h2 className="">{contect.name}</h2>
-              <p className="">{contect.email}</p>
-            </div>
-          </div>
+         <ContectCard contect={contect} key={contect.id}/>
         ))}
       </div>
     </div>
