@@ -5,9 +5,18 @@ import { AiFillPlusCircle } from "react-icons/ai";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/FireBase";
 import ContectCard from "./Components/ContectCard";
+import Model from "./Components/Model";
 
 const App = () => {
   const [contects, setcontects] = useState([]);
+  const [isOpen,setOpen] =useState(false);
+
+  const onOpen=()=>{
+    setOpen(true);
+  }
+  const onClose=()=>{
+    setOpen(false);
+  }
   useEffect(() => {
     const getcontects = async () => {
       try {
@@ -25,6 +34,7 @@ const App = () => {
     getcontects();
   }, []);
   return (
+    <>
     <div className="w-[370px] mx-auto px-4">
       <Navbar />
       <div className="flex gap-2">
@@ -37,7 +47,7 @@ const App = () => {
           />
         </div>
         <div className="flex items-center">
-          <AiFillPlusCircle className="text-white text-5xl cursor-pointer" />
+          <AiFillPlusCircle className="text-white text-5xl cursor-pointer" onClick={onOpen}/>
         </div>
       </div>
       <div>
@@ -46,6 +56,10 @@ const App = () => {
         ))}
       </div>
     </div>
+    <Model isOpen={isOpen} isClose={onClose}>
+Rathod
+    </Model>
+    </>
   );
 };
 
