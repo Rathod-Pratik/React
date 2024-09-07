@@ -1,0 +1,45 @@
+.Box{
+    background-color: rgb(234, 234, 249);
+    padding: 12px 12px;
+}
+.title{
+    color: #6f34fe;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+  .progress-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .cards{
+    flex-wrap: wrap;
+    margin: 20px 19px;
+    justify-content: center;
+  }
+  .Experience h1{
+    margin-top: 0.5rem;
+    color: #3f396d;
+    font-size: 2.5rem;
+    font-weight: 700;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .Experience p{
+    font-size: 1rem;
+    width: 70%;
+    color: #6c757d;
+    text-align: center;
+    margin: auto;
+    padding: 9px 30px;
+  }
+.cv-btn button{
+  padding: 13px 30px !important;
+}
+.cv-btn{
+  display: flex;
+  justify-content: center;
+  padding: 13px 0px;
+}
