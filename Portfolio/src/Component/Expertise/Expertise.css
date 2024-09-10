@@ -1,94 +1,93 @@
-.title{
-    margin-top: 12px !important;
-    color: #6f34fe;
-    font-size: 1.5rem !important;
-    display: flex;
-    justify-content: center;
+/* .title {
+  margin-top: 12px !important;
+  color: #6f34fe;
+  font-size: 1.5rem !important;
+  display: flex;
+  justify-content: center;
 }
-.sub-title{
-    display: flex;
-    justify-content: center;
-    color: #3f396d;
-    font-size: 2.5rem !important;
-    text-align: center;
-    font-weight: 700 !important;
+.sub-title {
+  display: flex;
+  justify-content: center;
+  color: #3f396d;
+  font-size: 2.5rem !important;
+  text-align: center;
+  font-weight: 700 !important;
 }
-.expertise-card{
-    display: flex;
-    margin-top: 30px;
-    justify-content: space-evenly;
+.expertise-card {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-evenly;
 }
 
-.card{
-    padding: 26px 11px;
-    height: 400px;
-    width: 400px;
+.card {
+  padding: 26px 11px;
+  height: 400px;
+  width: 400px;
 }
-.card img{
-    margin: auto;
-    width: 120px;
+.card img {
+  margin: auto;
+  width: 120px;
 }
-.card h1{
-    display: flex;
-    margin: 12px 0px;
-    justify-content: center;
-    color: #3f396d;
-    font-weight:bold ;
-    font-size: 1.5rem;
+.card h1 {
+  display: flex;
+  margin: 12px 0px;
+  justify-content: center;
+  color: #3f396d;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
-.card p{
-    color: #6c757d;
-    text-align: center;
-    font-size: 16px;
+.card p {
+  color: #6c757d;
+  text-align: center;
+  font-size: 16px;
 }
 .card a {
-    position: relative;
-    display: flex;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: orange;
+  width:100px;
+}
+.card a:hover {
+  color: #6f34fe;
+}
+.card a::after {
+  content: "";
+  position: absolute;
+  margin: auto;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: -10px;
+  background-color: #6f34fe;
+  transition: width 0.4s ease-in-out;
+}
+
+.card a:hover::after {
+  color: #6f34fe;
+  width: 120px;
+}
+
+@media (max-width: 800px) {
+  .expertise-card {
+    flex-direction: column;
     justify-content: center;
-    font-size: 1.2rem;
-    text-decoration: none;
-    color: orange;
+    gap: 1;
   }
-  .card a:hover{
-    color: #6f34fe;
+  .card {
+    margin: auto;
+    height: 330px;
+    width: auto;
+    padding: 26px 12px;
   }
- .card a::after {
-    content: '';
-    position: absolute;
- margin: auto;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 35%;
-    background-color: #6f34fe;
-    transition: width 0.4s ease-in-out;
+  .card p {
+    text-align: justify;
   }
-  
- .card a:hover::after {
-    color: #6f34fe;
-    width: 30%;
+}
+@media (max-width: 340px) {
+  .card {
+    padding: unset;
   }
-
-  @media (max-width: 800px) {
-    .expertise-card{
-        flex-direction: column;
-        justify-content: center;
-        gap: 1;
-    }
-    .card{
-       margin: auto;
-       height: 330px;
-       width: auto;
-       padding: 26px 12px;
-    }
-    .card p{
-        text-align: justify;
-    }
-  }
-  @media (max-width: 340px) {
-    .card{
-        padding: unset;
-    }
-  }
-
- 
+} */

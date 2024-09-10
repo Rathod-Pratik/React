@@ -45,6 +45,9 @@ const Box = styled.div`
     align-items: center;
     text-align: center;
     }
+    @media only screen and (max-width: 1000px){
+      width: 198px;
+    }
 `;
 
 const skills = ({ color, text ,percentage }) => {
