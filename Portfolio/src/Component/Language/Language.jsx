@@ -1,109 +1,48 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import Card from "../language-card";
-import Button from "../Button"
-import styled from 'styled-components';
-import Aos from 'aos'
-import 'aos/dist/aos.css'
+import Button from "../Button";
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import './language.css'
+
 const Language = () => {
-  useEffect(()=>{
+  useEffect(() => {
     Aos.init();
-  })
+  });
+
   return (
-    <Box>
-  <div class="title" data-aos='fade-down' >My skills</div>
-  <div className='hero'>
-  <div class="cards" data-aos='fade-down'>
-    <Card text={"HTML & CSS"} percentage={70} color={"yellow"} />
-    <Card text={"jQuery"} percentage={95} color={"#ff6161"} />
-    <Card text={"Javascript"} percentage={60} color={"orange"} />
-    <Card text={"ReactJs"} percentage={30} color={"green"} />
-  </div>
-  <div class="experience" data-aos='fade-down'>
-    <h1 data-aos='fade-down'>Beautiful & Unique Digital <br /> Experiences</h1>
-    <p>Creating beautiful and unique digital experiences requires a blend of creativity and technical skill. By focusing on intuitive user interfaces and innovative design, digital platforms can captivate users, keeping them engaged and invested in the content.</p>
-    <p>Personalized experiences also enhance user interaction, making the digital journey memorable. Thoughtful animations, seamless navigation, and responsive design contribute to a visually appealing and efficient digital environment.</p>
-    <div class="cv-btn" data-aos='fade-down'>
-      <Button class="lang-btn" text={"Download CV"} />
+    <div className="bg-gray-100 p-4">
+      <div className="text-center text-purple-500 text-xl font-semibold mb-4" data-aos="fade-down">
+        My Skills
+      </div>
+
+      <div className="flex flex-col md:flex-row" id='fix-item'>
+        {/* Cards Section */}
+        <div className="flex flex-wrap justify-center w-full md:w-1/2 gap-4" data-aos="fade-down" id='card-width'>
+          <Card text={"HTML & CSS"} percentage={70} color={"yellow"} />
+          <Card text={"jQuery"} percentage={95} color={"#ff6161"} />
+          <Card text={"Javascript"} percentage={60} color={"orange"} />
+          <Card text={"ReactJs"} percentage={30} color={"green"} />
+        </div>
+
+        {/* Experience Section */}
+        <div className="w-full md:w-1/2 mt-6 md:mt-0 text-center" data-aos="fade-down" id='data-section'>
+          <h1 className="text-gray-800 text-3xl font-bold mb-4">
+            Beautiful & Unique Digital <br /> Experiences
+          </h1>
+          <p className="text-gray-600 text-base mx-auto px-6 mb-4">
+            Creating beautiful and unique digital experiences requires a blend of creativity and technical skill. By focusing on intuitive user interfaces and innovative design, digital platforms can captivate users, keeping them engaged and invested in the content.
+          </p>
+          <p className="text-gray-600 text-base mx-auto px-6">
+            Personalized experiences also enhance user interaction, making the digital journey memorable. Thoughtful animations, seamless navigation, and responsive design contribute to a visually appealing and efficient digital environment.
+          </p>
+          <div className="mt-6">
+            <Button text={"Download CV"} />
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  );
+};
 
-    </Box>
-  )
-}
-
-export default Language
-
-const Box=styled.div`
-    background-color: rgb(234, 234, 249);
-    padding: 12px 12px;
-.title{
-    color: #6f34fe;
-    font-size: 1.5rem;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-}
-  .hero{
-    display: flex;
-  }
-  .cards{
-    display: flex;
-    width: 48%;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 50%;
-    gap: 1rem;
-  }
-  .experience h1{
-    margin-top: 0.5rem;
-    color: #3f396d;
-    font-size: 2.5rem;
-    font-weight: 700;
-    display:flex;
-    justify-content: center;
-    text-align: center;
-  }
-  .experience p{
-    font-size: 1rem;
-    width: 70%;
-    color: #6c757d;
-    text-align: center;
-    margin: auto;
-    padding: 9px 30px;
-  }
-.cv-btn button{
-  padding: 13px 30px !important;
-}
-.cv-btn{
-  display: flex;
-  justify-content: center;
-  padding: 13px 0px;
-}
-
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
- .experience {
-  margin-top: 20px;
-  width: 48%;
-}
-@media only screen and (max-width: 850px){
-  .hero{
-    flex-direction: column;
-  }
-  .cards{
-    width: 100%;
-  }
-  .experience{
-    width: 100%;
-  }
-  .experience p{
-    width: 100%;
-  }
-}
-
-`
+export default Language;

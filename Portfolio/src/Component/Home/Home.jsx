@@ -1,130 +1,35 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
 import Button from "../Button";
-import Aos from 'aos'
-import 'aos/dist/aos.css'
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 const Home = () => {
-  useEffect(()=>{
-    Aos.init()
-  })
+  useEffect(() => {
+    Aos.init();
+  });
+
   return (
-    <Homepage >
-      <div className="info-section" id="info" data-aos="fade-right">
-        <div className="desc-section ">
-        <span className="hello-text">Hello! I Am</span>
-        <span className="name-text">Rathod Pratik</span>
-        <span className="description-text" id="text">
-          I'm A Web Developer having experience in creating websites
-          with fully responsive design and handling backend development.
-        </span>
+    <main className="bg-gradient-to-r from-purple-100 to-blue-100 flex flex-col md:flex-row w-full px-12 pt-[5rem] items-center h-[650px]">
+      {/* Info Section */}
+      <div className="w-full md:w-1/2 flex flex-col items-center text-center md:text-left md:items-start md:pl-[5rem]" id="info" data-aos="fade-right">
+        <div className="mt-14">
+          <span className="text-gray-800 text-5xl block">Hello! I Am</span>
+          <span className="text-purple-500 text-5xl mt-2 block">Rathod Pratik</span>
+          <span className="text-gray-700 text-lg mt-4 block max-w-[70%] mx-auto md:mx-0">
+            I'm A Web Developer having experience in creating websites with fully responsive design and handling backend development.
+          </span>
         </div>
-        <div className="button-container">
+        <div className="mt-4">
           <Button text={"Hire me"} />
         </div>
       </div>
-      <div className="image-section" id="image" data-aos="fade-left">
-        <img src="Images/home.jpg" className="profile-image" alt="" />
-      </div>
-    </Homepage>
 
+      {/* Image Section - hidden on small screens */}
+      <div className="hidden md:flex w-full md:w-1/2 justify-center mt-14" id="image" data-aos="fade-left">
+        <img src="Images/home.jpg" alt="profile" className="rounded-full w-[400px] h-[400px] object-cover" />
+      </div>
+    </main>
   );
 };
 
 export default Home;
-const Homepage = styled.main`
-
-    background: linear-gradient(
-      33deg,
-      rgba(242, 242, 255, 1) 0%,
-      rgba(235, 249, 255, 1) 100%
-    );
-    display: flex;
-    margin: auto;
-    width: 100%;
-    padding: 0px 3rem;
-    align-items: center;
-    height:650px;
-  
-  .info-section {
-    width: 48%;
-    padding: 12px 30px;
-  }
-  .desc-section{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 3.5rem;
-  }
-  .hello-text {
-    color: #3f396d;
-    font-size: 3rem;
-  }
-  
-  .name-text {
-    color: #6f34fe;
-    font-size: 3rem;
-  }
-  
-  .description-text {
-    max-width: 70%;
-    color: #333;
-  }
-  
-  .button-container {
-    margin-top: 1rem;
-  }
-  
-  .image-section {
-    margin-top: 3.5rem;
-    width: 48%;
-    display: flex;
-    justify-content: end;
-  }
-  
-  .profile-image {
-    border-radius: 50%;
-    max-width: 400px;
-    height: 400px;
-  }
-  @media only screen and (max-width: 1150px){
-      .image-section {
-    margin-top: 1.5rem;
-  }
-  
-  }
-  @media only screen and (max-width: 850px) {
-    .button-container{
-    display: flex;
-    text-align: center;
-    }
-    #text {
-      max-width: 90%;
-    }
-    #image {
-      display: none;
-    }
-
-    #info {
-      width: 100vw;
-    }
-  
-        height: 500px;
-  }
-  @media only screen and (max-width: 350px){
-    #text{
-      text-align: center;
-    }
-    .hello-text,.name-text{
-      font-size: 2rem;
-    }
-    #info{
-      width: 100vw;
-        display: flex;
-        gap: 12px;
-        align-items: center;
-    }
-
-        height: 325px;
-    }
-`;
