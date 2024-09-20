@@ -2,7 +2,10 @@ const express = require('express');
 const User = require('../Model/User');
 const app = express.Router();
 const { body, validationResult } = require('express-validator');
+const bcrtpt=require('bcryptjs');
+const jwt=require('jsonwebtoken');
 
+const JWT_SECRET="Rathod";
 //Create user using POST 'api/auth/createuser' No login required
 app.post('/createuser', [
     body('name', 'Enter valid name').isLength({ min: 5 }),
@@ -21,13 +24,23 @@ app.post('/createuser', [
         if(user){
         return res.status(400).json({error:"sorry a user with this email already exists"});
     }
+    const salt =await bcrtpt.genSalt(10);
+   const secPass=await bcrtpt.hash(req.body.password,salt);
      user = await User.create({
         name: req.body.name,
-        password: req.body.password,
+        password: secPass,
         email: req.body.email
     })
     //return user data as response 
-    res.json(user);
+    const authtoken=jwt.sign(data,JWT_SECRET);
+    res.json({authtoken})
+
+    const data={
+        user:{
+            id:user.id
+        }
+    }
+    // res.json(user);
 
     //if error occured in try block catch block will run
 }catch(error){
