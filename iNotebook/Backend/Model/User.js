@@ -1,7 +1,7 @@
 const mongoose =require('mongoose');
 
 const notesSchema=new mongoose.Schema({
-    Name:{
+    name:{
         type :String,
         required:true
     },
@@ -23,5 +23,4 @@ const notesSchema=new mongoose.Schema({
 },{timestamps:true});
 
 const User=mongoose.model("user",notesSchema);
-
 module.exports=User;
