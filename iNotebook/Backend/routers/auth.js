@@ -4,8 +4,9 @@ const app = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrtpt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
+const {fetchuser} = require('../middleware/fetchuser')
 
-//Create user using POST 'api/auth/createuser' No login required
+//Route-1 Create user using POST 'api/auth/createuser' No login required
 app.post('/createuser', [
     body('name', 'Enter valid name').isLength({ min: 5 }),
     body('email', 'enter valid email').isEmail(),
@@ -31,14 +32,14 @@ app.post('/createuser', [
         email: req.body.email
     })
     //return user data as response 
-    const JWT_SECRET="Rathod";
-    const authtoken=jwt.sign(data,JWT_SECRET);
-    
     const data={
         user:{
             id:user.id
         }
     };
+    const JWT_SECRET="Rathod";
+    const authtoken=jwt.sign(data,JWT_SECRET);
+    
     res.json({authtoken})
 
     //if error occured in try block catch block will run
@@ -48,7 +49,7 @@ app.post('/createuser', [
 }
 })
 
-//Create user using POST 'api/auth/createuser' No login
+//Route-2  login user user using POST 'api/auth/createuser' No login
 app.post('/login', [
     body('email', 'enter valid email').isEmail(),
     body('password', 'Enter a valid password').isLength({ min: 5 })
@@ -91,4 +92,24 @@ app.post('/login', [
 }
 })
 
+
+//route 2: get loggedin User details using post  'api/auth/getuser' No login
+
+app.post('/getuser',fetchuser, async (req, res) => {
+    //if there are errors return bad request and the errors
+    const error = validationResult(req);
+    if (!error.isEmpty()) {
+        return res.status(400).json({ error: error.array()});
+    }
+
+    try{
+        userId=req.user.id;
+        const user=await User.findById(userId).select("-password");
+        res.send(user);
+    //if error occured in try block catch block will run
+}catch(error){
+    console.log(error.message);
+    res.status(500).send("some error occured");
+}
+})
 module.exports = app;
