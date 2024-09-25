@@ -1,11 +1,16 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  let location = useLocation();
+  React.useEffect(() => {
+    console.log(location.pathname)
+  }, [location.pathname]);
   return (
-    <div>
-      <Link to='/'>Home</Link>
-      <Link to='/about'>About</Link>
+    <div className='flex flex-row h-10 text-black items-center gap-5 px-5'>
+      <h1 className='text-2xl'>iNoteBook</h1>
+      <Link className={`hover:border-b-2 hover:border-b-black ${location.pathname === '/' ? "text-[#b6b4b4]" : ""} `} to='/'>Home</Link>
+      <Link className={`hover:border-b-2 hover:border-b-black ${location.pathname === '/about' ? "text-[#b6b4b4]" : ""} `} to='/about'>About</Link>
     </div>
   );
 }
