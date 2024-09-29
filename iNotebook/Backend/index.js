@@ -5,12 +5,12 @@ connnectToMongo("mongodb://localhost:27017/myDB").then(()=>{
 
 const express = require('express');
 const app = express();
-
+const cors=require('cors');
 const port = 5000
 
 
 app.use(express.json())
-
+app.use(cors())
 // Available Routes
  app.use('/api/auth', require('./routers/auth'))
  app.use('/api/notes', require('./routers/notes'))
