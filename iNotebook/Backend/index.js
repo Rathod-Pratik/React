@@ -1,5 +1,5 @@
 const {connnectToMongo}=require('./connection');
-connnectToMongo("mongodb://localhost:27017/myDB").then(()=>{
+connnectToMongo("mongodb+srv://RathodPratik:Pratik%401432@cluster0.v5r2m.mongodb.net/iNotebook?retryWrites=true&w=majority").then(()=>{
   console.log("connection success");
 })
 
