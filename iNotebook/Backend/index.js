@@ -11,6 +11,11 @@ const port = 5000
 
 app.use(express.json())
 app.use(cors())
+
+app.use("/",(req,res)=>{
+  console.log("Application running properly");
+})
+
 // Available Routes
  app.use('/api/auth', require('./routers/auth'))
  app.use('/api/notes', require('./routers/notes'))
