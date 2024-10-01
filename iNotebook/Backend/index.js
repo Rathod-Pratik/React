@@ -12,7 +12,7 @@ const port = 5000
 app.use(express.json())
 app.use(cors())
 
-app.use("/",(req,res)=>{
+app.get("/",(req,res)=>{
   console.log("Application running properly");
 })
 
