@@ -70,6 +70,7 @@ app.post('/login', [
     try {
         // Check if the user exists
         let user = await User.findOne({ email });
+        const name=user.name;
         if (!user) {
             return res.status(400).json({ success, error: "Please try to login with correct credentials" });
         }
@@ -92,9 +93,8 @@ app.post('/login', [
         const authtoken = jwt.sign(data, JWT_SECRET, { expiresIn: '1h' }); // Token expires in 1 hour
 
         // Set success to true and send the response with the token
-        const username=user.name;
         success = true;
-        res.json({ success, authtoken,username});
+        res.json({ success, authtoken,"name": name});
 
     } catch (error) {
         console.error(error.message);
