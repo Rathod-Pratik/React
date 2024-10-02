@@ -70,13 +70,15 @@ app.post('/login', [
     try {
         // Check if the user exists
         let user = await User.findOne({ email });
-        const name=user.name;
         if (!user) {
             return res.status(400).json({ success, error: "Please try to login with correct credentials" });
         }
 
-        // Compare password bcrtpt
-        const passwordCompare = await bcrtpt.compare(password, user.password);
+        // Retrieve the user's name only if the user exists
+        const name = user.name;
+
+        // Compare password
+        const passwordCompare = await bcrypt.compare(password, user.password);
         if (!passwordCompare) {
             return res.status(400).json({ success, error: "Please try to login with correct credentials" });
         }
@@ -94,13 +96,14 @@ app.post('/login', [
 
         // Set success to true and send the response with the token
         success = true;
-        res.json({ success, authtoken,name});
+        res.json({ success, authtoken, name });
 
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Some error occurred");
     }
 });
+
 
 
 //route 3: get loggedin User details using post  'api/auth/getuser' No login
