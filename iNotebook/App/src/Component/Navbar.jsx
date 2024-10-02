@@ -6,7 +6,9 @@ const Navbar = () => {
   let location = useLocation();
 
   const handleLogout = () => {
-    location('/login')
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    location('/')
   }
   React.useEffect(() => {
   }, [location.pathname]);

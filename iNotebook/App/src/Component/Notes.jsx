@@ -52,9 +52,10 @@ const Notes = () => {
       navigation('/login');
     }
   }, []);
+  const value = localStorage.getItem('name');
   return (
     <>
-    <h1>Accouent: {}</h1>
+    <h1 className="text-white text-center mt-8 text-3xl">Account: {`${value}`}</h1>
       <AddNote/>
       <div>
         <h2 className="text-white text-center text-5xl pb-7">your notes</h2>

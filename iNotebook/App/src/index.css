@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 body{
-  background:url('./src/assets/glowing-triangle-neon-pq.jpg') center center no-repeat;
+  background:url('/src/assets/glowing-triangle-neon-pq.jpg') center center no-repeat;
   backdrop-filter: blur(40px); 
   box-sizing: border-box;
 

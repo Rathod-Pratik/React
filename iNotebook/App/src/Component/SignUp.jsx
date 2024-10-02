@@ -10,6 +10,7 @@ const handlesubmit = async (e) => {
   e.preventDefault();
 
   const  {name,email,password}=credentials;
+  localStorage.setItem("name" ,name);
   const response = await fetch(`https://my-inotebook-backend.vercel.app/api/auth/createuser`, {
     method: "POST",
     headers: {

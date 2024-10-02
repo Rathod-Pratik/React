@@ -8,7 +8,7 @@ const Login = (props) => {
   const handlesubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`https://my-inotebook-backend.vercel.app/api/auth/login`, {
+    const response = await fetch(`https://inotebookbackend-ten.vercel.app/api/auth/login`, {
       method: "POST",
       headers: {
         "content-Type": "application/json",
@@ -21,6 +21,9 @@ const Login = (props) => {
         //save th auth token and redirect
         props.showAlert("Login successfully","text-green-800","bg-green-50");
         localStorage.setItem('token',json.authtoken);
+        console.log(json.name)
+        localStorage.setItem('name',json.name);
+
         history("/");
      }
      else{
