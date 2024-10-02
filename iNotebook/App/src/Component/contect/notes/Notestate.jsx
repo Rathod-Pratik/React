@@ -6,6 +6,11 @@ const NoteState = (props) => {
   const [notes, setNotes] = useState(noteinitial); // Notice capitalization in setNotes
   const host ="https://my-inotebook-backend.vercel.app"
   //get all notes
+
+  const getAc=async()=>{
+    
+  }
+
   const getnotes = async () => {
     try {
       const response = await fetch(`${host}/api/notes/fetchallnotes`, {

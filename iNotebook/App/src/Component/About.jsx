@@ -17,7 +17,7 @@ const About = () => {
         <h2 id="accordion-collapse-heading-1">
           <button
             type="button"
-            className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+            className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-white border border-b-0 border-gray-200 rounded-t-xl   gap-3"
             onClick={() => toggleSection(1)}
             aria-expanded={openSection === 1}
             aria-controls="accordion-collapse-body-1"
@@ -46,11 +46,11 @@ const About = () => {
             id="accordion-collapse-body-1"
             className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
           >
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="mb-2 text-white">
               Designed with a responsive layout, ensuring compatibility across
               various devices (desktop, tablet, mobile).
             </p>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="mb-2 text-white">
               Offers a clean and intuitive interface for easy navigation and
               efficient note management.
             </p>
@@ -60,7 +60,7 @@ const About = () => {
         <h2 id="accordion-collapse-heading-2">
           <button
             type="button"
-            className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+            className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-white border border-b-0 border-gray-200   gap-3"
             onClick={() => toggleSection(2)}
             aria-expanded={openSection === 2}
             aria-controls="accordion-collapse-body-2"
@@ -89,13 +89,16 @@ const About = () => {
             id="accordion-collapse-body-2"
             className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
           >
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="mb-2 text-white">
               Implements JWT (JSON Web Tokens) for secure user authentication
               and session management
             </p>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="mb-2 text-white">
               Password hashing ensures that user passwords are stored securely,
               mitigating the risk of data breaches.
+            </p>
+            <p className="mb-2 text-white">
+            Input data is subjected to validation and sanitization to protect against common vulnerabilities, such as SQL injection and XSS attacks.
             </p>
           </div>
         )}
@@ -103,7 +106,7 @@ const About = () => {
         <h2 id="accordion-collapse-heading-3">
           <button
             type="button"
-            className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+            className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-white border border-gray-200 gap-3"
             onClick={() => toggleSection(3)}
             aria-expanded={openSection === 3}
             aria-controls="accordion-collapse-body-3"
@@ -132,15 +135,15 @@ const About = () => {
             id="accordion-collapse-body-3"
             className="p-5 border border-t-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
           >
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="mb-2 text-white">
               Enables users to create, read, update, and delete (CRUD) their
               notes seamlessly.
             </p>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="mb-2 text-white">
               Features user authentication to ensure secure access to personal
               notes.
             </p>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="mb-2 text-white">
               Allows for tagging and categorization of notes for easier
               organization and retrieval.
             </p>
@@ -149,7 +152,7 @@ const About = () => {
        <h2 id="accordion-collapse-heading-4">
   <button
     type="button"
-    className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+    className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-white border border-gray-200   gap-3"
     onClick={() => toggleSection(4)} 
     aria-expanded={openSection === 4} 
     aria-controls="accordion-collapse-body-4"
@@ -178,13 +181,13 @@ const About = () => {
     id="accordion-collapse-body-4" 
     className="p-5 border border-t-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900"
   >
-    <p className="mb-2 text-gray-500 dark:text-gray-400">
+    <p className="mb-2 text-white">
       Built using React for the frontend, providing a dynamic and responsive user interface.
     </p>
-    <p className="mb-2 text-gray-500 dark:text-gray-400">
+    <p className="mb-2 text-white">
       Powered by Express and Node.js on the backend for efficient server-side logic and API handling.
     </p>
-    <p className="mb-2 text-gray-500 dark:text-gray-400">
+    <p className="mb-2 text-white">
       Uses MongoDB as the database to store and manage notes effectively.
     </p>
   </div>

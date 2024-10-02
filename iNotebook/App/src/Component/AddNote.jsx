@@ -27,7 +27,7 @@ const addNote = () => {
   return (
     <>
       <div>
-      <section className="bg-black">
+      <section className="bg-transparent">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-[60vh] lg:py-0 my-4 sm:my-8">
     <div className="w-full max-w-md bg-white rounded-lg shadow dark:border md:mt-0 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
       <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

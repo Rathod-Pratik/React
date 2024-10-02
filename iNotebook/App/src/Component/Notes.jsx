@@ -54,6 +54,7 @@ const Notes = () => {
   }, []);
   return (
     <>
+    <h1>Accouent: {}</h1>
       <AddNote/>
       <div>
         <h2 className="text-white text-center text-5xl pb-7">your notes</h2>

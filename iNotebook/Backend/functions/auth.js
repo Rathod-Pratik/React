@@ -33,6 +33,7 @@ app.post('/createuser', [
         password: secPass,
         email: req.body.email
     })
+    const name=req.body.name;
     //return user data as response 
     const data={
         user:{
@@ -42,7 +43,7 @@ app.post('/createuser', [
     const JWT_SECRET="Rathod";
     const authtoken=jwt.sign(data,JWT_SECRET);
     success=true;
-    res.json({success,authtoken})
+    res.json({success,authtoken,name})
 
     //if error occured in try block catch block will run
 }catch(error){
@@ -83,11 +84,12 @@ app.post('/login', [
             id:user.id
         }
     };
+    const email=req.body.email;
     const JWT_SECRET="Rathod";
     const authtoken=jwt.sign(data,JWT_SECRET);
     console.log("Success is set to:", success);
     success=true;
-    res.json({success,authtoken})
+    res.json({success,authtoken,email});
 
     //if error occured in try block catch block will run
 }catch(error){
