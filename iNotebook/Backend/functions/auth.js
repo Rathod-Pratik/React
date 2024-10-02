@@ -94,7 +94,7 @@ app.post('/login', [
 
         // Set success to true and send the response with the token
         success = true;
-        res.json({ success, authtoken,"name": name});
+        res.json({ success, authtoken,name});
 
     } catch (error) {
         console.error(error.message);
