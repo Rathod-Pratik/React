@@ -4,7 +4,7 @@ import NoteContext from "./noteContect"; // Correct the typo here
 const NoteState = (props) => {
   const noteinitial=[];
   const [notes, setNotes] = useState(noteinitial); // Notice capitalization in setNotes
-  const host ="https://react-psi-liard.vercel.app/"
+  const host ="https://my-inotebook-backend.vercel.app/"
   //get all notes
   const getnotes = async () => {
     try {
