@@ -27,9 +27,6 @@ app.use('/api/auth', require('./functions/auth'))
  app.use('/api/notes', require('./functions/notes'))
 
 
- const serverless = require('serverless-http');
-module.exports.handler = serverless(app);
-/*
-app.listen(port, () => {
+ app.listen(port, () => {
   console.log(`iNotebook listening at http://localhost:${port}`)
-})*/
+})
