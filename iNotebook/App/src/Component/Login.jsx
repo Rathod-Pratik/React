@@ -8,7 +8,7 @@ const Login = (props) => {
   const handlesubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`https://backend-nu-sooty.vercel.app/api/auth/login`, {
+    const response = await fetch(`https://my-inotebook-backend.vercel.app/api/auth/login`, {
       method: "POST",
       headers: {
         "content-Type": "application/json",

@@ -10,7 +10,7 @@ const handlesubmit = async (e) => {
   e.preventDefault();
 
   const  {name,email,password}=credentials;
-  const response = await fetch(`https://backend-nu-sooty.vercel.app/api/auth/createuser`, {
+  const response = await fetch(`https://my-inotebook-backend.vercel.app/api/auth/createuser`, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
