@@ -1,4 +1,4 @@
-const {connnectToMongo}=require('../functions/connection');
+const {connnectToMongo}=require('./functions/connection');
 connnectToMongo("mongodb+srv://RathodPratik:Pratik%401432@cluster0.v5r2m.mongodb.net/iNotebook?retryWrites=true&w=majority").then(()=>{
   console.log("connection success");
 })
@@ -23,8 +23,8 @@ app.get("/",(req,res)=>{
 })
 
 // Available Routes
-app.use('/api/auth', require('../functions/auth'))
- app.use('/api/notes', require('../functions/notes'))
+app.use('/api/auth', require('./functions/auth'))
+ app.use('/api/notes', require('./functions/notes'))
 
 
  const serverless = require('serverless-http');
