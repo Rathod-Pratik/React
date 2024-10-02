@@ -75,8 +75,8 @@ app.post('/login', [
             return res.status(400).json({ success, error: "Please try to login with correct credentials" });
         }
 
-        // Compare password
-        const passwordCompare = await bcrypt.compare(password, user.password);
+        // Compare password bcrtpt
+        const passwordCompare = await bcrtpt.compare(password, user.password);
         if (!passwordCompare) {
             return res.status(400).json({ success, error: "Please try to login with correct credentials" });
         }
