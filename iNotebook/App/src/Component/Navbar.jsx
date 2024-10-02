@@ -6,7 +6,6 @@ const Navbar = () => {
   let location = useLocation();
 
   const handleLogout = () => {
-    // localStorage.removeItem('token');
     location('/login')
   }
   React.useEffect(() => {
@@ -22,24 +21,6 @@ const Navbar = () => {
 
 
   return (<>
-    {/* <div className='flex justify-between flex-wrap items-center h-14 text-white bg-black px-5'>
-  <div className='flex flex-wrap items-center gap-5'>
-    <h1 className='text-2xl'>iNoteBook</h1>
-    <Link className={`hover:border-b-2 hover:border-b-[#b6b4b4] ${location.pathname === '/' ? "text-[#b6b4b4]" : ""}`} to='/'>Home</Link>
-    <Link className={`hover:border-b-2 hover:border-b-[#b6b4b4] ${location.pathname === '/about' ? "text-[#b6b4b4]" : ""}`} to='/about'>About</Link>
-  </div>
-  
-  <div>
-    {!localStorage.getItem('token') ? (
-      <div className="flex gap-2">
-        <Link to="/login" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Login</Link>
-        <Link to="/signup" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Sign Up</Link>
-      </div>
-    ) : (
-      <Link to="/login" onClick={handleLogout} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Logout</Link>
-    )}
-  </div>
-</div> */}
     <nav className="bg-black w-full z-50 top-0 shadow-custom" >
       <div className="flex justify-between items-center px-[30px] py-[13px] " data-aos="fade-top">
       <h1 className="text-4xl font-bold text-white">iNotebook</h1>

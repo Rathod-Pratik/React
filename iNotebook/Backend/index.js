@@ -12,7 +12,7 @@ const port = 5000
 app.use(express.json())
 app.use(cors(
   {
-    origin:["https://fabulous-longma-345254.netlify.app"],
+    origin:["https://my-notebook-pratik.netlify.app"],
     methods:["POST","PUT","DELETE","GET"],
     credentials:true
   }
