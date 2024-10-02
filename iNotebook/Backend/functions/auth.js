@@ -2,7 +2,7 @@ const express = require('express');
 const User = require('../Model/User');
 const app = express.Router();
 const { body, validationResult } = require('express-validator');
-const bcrtpt=require('bcryptjs');
+const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser')
 
@@ -79,6 +79,7 @@ app.post('/login', [
 
         // Compare password
         const passwordCompare = await bcrypt.compare(password, user.password);
+
         if (!passwordCompare) {
             return res.status(400).json({ success, error: "Please try to login with correct credentials" });
         }
