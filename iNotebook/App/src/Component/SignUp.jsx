@@ -1,5 +1,6 @@
 import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SignUp = (props) => {
 
@@ -8,25 +9,27 @@ const SignUp = (props) => {
 
 const handlesubmit = async (e) => {
   e.preventDefault();
+  props.setProgress(10);
 
   const  {name,email,password}=credentials;
-  localStorage.setItem("name" ,name);
-  const response = await fetch(`https://my-inotebook-backend.vercel.app/api/auth/createuser`, {
+  const response = await fetch(`https://inotebookbackend-ten.vercel.app/auth/createuser`, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
     },
     body: JSON.stringify({name,email,password}),
   });
-
+  props.setProgress(50);
   const json = await response.json();
   if(json.success){
-
     //save th auth token and redirect
     localStorage.setItem('token',json.authtoken);
+    localStorage.setItem("name" ,json.name);
     history("/login");
+    props.setProgress(100);
     props.showAlert("Create account successfully","text-green-800","bg-green-50");
   }else{
+    props.setProgress(100);
     props.showAlert("Invalid credentials","text-red-800","bg-red-50");
   }
 };
@@ -126,6 +129,7 @@ const handlesubmit = async (e) => {
       >
         Sign Up
       </button>
+      <p className="text-white my-2 text-center">already have account <Link className="text-blue-700" to={"/login"}>Login</Link> now</p>
     </form>
   </div>
 </div>

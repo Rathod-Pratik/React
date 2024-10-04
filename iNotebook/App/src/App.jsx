@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import LoadingBar from 'react-top-loading-bar'
+import React, { useState ,lazy,Suspense} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Component/Navbar";
-import Home from "./Component/Home";
 import SignUp from "./Component/SignUp";
-import Login from "./Component/Login";
+import Home from "./Component/Home";
 import About from "./Component/About";
 import NoteState from "./Component/contect/notes/Notestate";
 import Alert from "./Component/Alert";
-import { Analytics } from "@vercel/analytics/react"
-
 const App = () => {
   const[alert,setalert]=useState(null);
   const showAlert=(message,color,bgcolor)=>{
@@ -21,20 +19,26 @@ const App = () => {
     setalert(null);
    }, 1500);
   }
+  const [progress, setProgress] = useState(0)
+
+const Login = lazy(() => import('./Component/Login'));
   return (
-    <NoteState showAlert={showAlert} >
+    <NoteState  showAlert={showAlert} >
     <Router>
-      <Analytics/>
-      <Navbar />
+      <Navbar setProgress={setProgress}  />
+      <LoadingBar
+        color='#c4bfbf'
+        progress={progress}
+      />
       <Alert alert={alert}/>
-      {/* <div className="block m-auto w-[80%]"> */}
+      <Suspense fallback={<div></div>}>
       <Routes>
-        <Route path="/" element={<Home showAlert={showAlert} />} />
+        <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login showAlert={showAlert} />} />
-        <Route path="/signup" element={<SignUp showAlert={showAlert} />} />
+        <Route path="/login" element={<Login setProgress={setProgress} showAlert={showAlert} />} />
+        <Route path="/signup" element={<SignUp setProgress={setProgress} showAlert={showAlert} />} />
       </Routes>
-      {/* </div> */}
+      </Suspense>
     </Router>
     </NoteState>
   );

@@ -6,11 +6,6 @@ const NoteState = (props) => {
   const [notes, setNotes] = useState(noteinitial); // Notice capitalization in setNotes
   const host ="https://inotebookbackend-ten.vercel.app"
   //get all notes
-
-  const getAc=async()=>{
-    
-  }
-
   const getnotes = async () => {
     try {
       const response = await fetch(`${host}/api/notes/fetchallnotes`, {
@@ -24,7 +19,9 @@ const NoteState = (props) => {
       const json = await response.json(); // Make sure to await the response
   
       setNotes(json); // Update the notes state
+
     } catch (error) {
+
       console.error('Error fetching notes:', error);
     }
   };
@@ -32,7 +29,7 @@ const NoteState = (props) => {
 
   //Add a note
   const addNote=async(title,description,tag)=>{
-
+    
     const response=await fetch(`${host}/api/notes/addnotes`,{
       method:'POST',
       headers:{
@@ -48,6 +45,7 @@ const NoteState = (props) => {
   }
   //edit a note
   const editNote=async(id,title,description,tag)=>{
+    
     const response=await fetch(`${host}/api/notes/updatenode/${id}`,{
       method:'PUT',
       headers:{
@@ -76,6 +74,7 @@ const NoteState = (props) => {
   }
   //delete a note
   const deleteNode = async (id) => {
+    
     // Optimistically remove the note from UI (update state first)
     const newNotes = notes.filter((note) => note._id !== id);
     const previousNotes = notes; // Save the current state in case we need to rollback
@@ -96,8 +95,10 @@ const NoteState = (props) => {
       if (response.status !== 200) {
         setNotes(previousNotes); // Roll back to previous state
       }
+
     } catch (error) {
       setNotes(previousNotes); // Roll back to previous state in case of failure
+
     }
     props.showAlert("Delete note successfully","text-green-800","bg-green-50")
   };

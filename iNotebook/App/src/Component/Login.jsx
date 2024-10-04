@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
     let history=useNavigate();
@@ -7,7 +7,7 @@ const Login = (props) => {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
-
+    props.setProgress(10);
     const response = await fetch(`https://inotebookbackend-ten.vercel.app/api/auth/login`, {
       method: "POST",
       headers: {
@@ -15,18 +15,20 @@ const Login = (props) => {
       },
       body: JSON.stringify({ email:credentials.email, password:credentials.password }),
     });
-
+    
+    props.setProgress(50);
     const json = await response.json();
+    
      if(json.success===true){
-        //save th auth token and redirect
-        props.showAlert("Login successfully","text-green-800","bg-green-50");
-        localStorage.setItem('token',json.authtoken);
-        console.log(json.name)
-        localStorage.setItem('name',json.name);
-
-        history("/");
-     }
-     else{
+      props.setProgress(100);
+      //save th auth token and redirect
+      props.showAlert("Login successfully","text-green-800","bg-green-50");
+      localStorage.setItem('token',json.authtoken);
+      localStorage.setItem('name',json.name);
+      history("/");
+    }
+    else{
+       props.setProgress(100);
       props.showAlert("Enter valid credentials","text-red-800","bg-red-50");
      }
   };
@@ -89,6 +91,7 @@ const Login = (props) => {
         >
           Login
         </button>
+        <p className="text-white my-2 text-center">Don't have account <Link className="text-blue-700" to={"/signup"}>Sign up</Link> now</p>
       </form>
     </div>
   </div>
