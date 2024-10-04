@@ -93,7 +93,7 @@ app.post('/login', [
 
         // Generate a new JWT token
         const JWT_SECRET = "Rathod";  // Use an environment variable in production
-        const authtoken = jwt.sign(data, JWT_SECRET, { expiresIn: '1h' }); // Token expires in 1 hour
+        const authtoken = jwt.sign(data, JWT_SECRET); 
 
         // Set success to true and send the response with the token
         success = true;
