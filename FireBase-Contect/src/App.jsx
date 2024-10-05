@@ -3,9 +3,11 @@ import Navbar from "./Components/Navbar";
 import { FiSearch } from "react-icons/fi";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { collection, getDocs } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import { db } from "./config/FireBase";
 import ContectCard from "./Components/ContectCard";
 import Model from "./Components/Model";
+import AddAndUpdateContect from "./Components/AddAndUpdateContect";
 
 const App = () => {
   const [contects, setcontects] = useState([]);
@@ -18,21 +20,26 @@ const App = () => {
     setOpen(false);
   }
   useEffect(() => {
-    const getcontects = async () => {
-      try {
-        const contectRef = collection(db, "Contect");
-        const contectsSnapshot = await getDocs(contectRef);
-        const ContectList = contectsSnapshot.docs.map((doc) => {
-          return {
-            id: doc.id,
-            ...doc.data(),
-          };
-        });
-        setcontects(ContectList);
-      } catch (error) {}
+    const getContacts = async () => {
+        try {
+          const contactRef = collection(db, "contects");
+          const contactsSnapshot = await getDocs(contactRef);
+          console.log(contactsSnapshot)
+          const contactList = contactsSnapshot.docs.map((doc) =>{ return{
+            id:doc.id,
+            ...doc.data()
+          }});
+  
+          setcontects(contactList);
+          console.log(contactList);
+        } catch (error) {
+          console.error("Error fetching contacts:", error);
+        }
     };
-    getcontects();
+  
+    getContacts();
   }, []);
+  
   return (
     <>
     <div className="w-[370px] mx-auto px-4">
@@ -56,9 +63,8 @@ const App = () => {
         ))}
       </div>
     </div>
-    <Model isOpen={isOpen} isClose={onClose}>
-Rathod
-    </Model>
+    <AddAndUpdateContect isOpen={isOpen} onClose={onClose}/>
+
     </>
   );
 };
