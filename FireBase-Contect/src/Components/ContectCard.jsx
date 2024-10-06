@@ -26,6 +26,7 @@ const ContectCard = ({contect}) => {
               <div className="flex flex-col">
                 <h2 className="font-medium">{contect.name}</h2>
                 <p className="text-sm">{contect.email}</p>
+                <p className="text-sm">{contect.mobile}</p>
               </div>
             </div>
             <div className="text-4xl items-center flex">

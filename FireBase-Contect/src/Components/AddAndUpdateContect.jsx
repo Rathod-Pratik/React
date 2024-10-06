@@ -9,6 +9,10 @@ import * as Yup from "yup";
 const contectSchemaValidation = Yup.object().shape({
   name: Yup.string().required("Name is required"),
   email: Yup.string().email("Invalid Email").required("Email is required"),
+  mobile: Yup.string()
+    .required("Mobile number is required")
+    .matches(/^\d{10}$/,   
+ "Mobile number must be 10 digits")
 });
 
 const AddAndUpdateContect = ({ isOpen, onClose, isupdate, contect }) => {
@@ -44,10 +48,12 @@ const AddAndUpdateContect = ({ isOpen, onClose, isupdate, contect }) => {
               ? {
                   name: contect.name,
                   email: contect.email,
+                  mobile:contect.mobile
                 }
               : {
                   name: "",
                   email: "",
+                  mobile:""
                 }
           }
           onSubmit={(values) => {
@@ -67,6 +73,13 @@ const AddAndUpdateContect = ({ isOpen, onClose, isupdate, contect }) => {
               <Field name="email" className="h-10 border" />
               <div className="text-red-500">
                 <ErrorMessage name="email" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="mobile">Number</label>
+              <Field name="mobile" className="h-10 border" />
+              <div className="text-red-500">
+                <ErrorMessage name="mobile" />
               </div>
             </div>
             <button
