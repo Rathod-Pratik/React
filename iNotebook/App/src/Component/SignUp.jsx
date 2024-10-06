@@ -15,7 +15,7 @@ const SignUp = (props) => {
     const { name, email, password } = credentials;
   
     try {
-      const response = await fetch(`https://inotebookbackend-ten.vercel.app/auth/createuser`, {
+      const response = await fetch(`https://inotebookbackend-ten.vercel.app/api/auth/createuser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
