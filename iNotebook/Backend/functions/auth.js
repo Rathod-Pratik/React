@@ -2,8 +2,8 @@ const express = require('express');
 const User = require('../Model/User');
 const app = express.Router();
 const { body, validationResult } = require('express-validator');
-const bcrypt=require('bcryptjs');
-const jwt=require('jsonwebtoken');
+const bcrypt = require('bcryptjs'); 
+const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser')
 
 //Route-1 Create user using POST 'api/auth/createuser' No login required
@@ -26,8 +26,8 @@ app.post('/createuser', [
             success=false;
         return res.status(400).json({success,error:"sorry a user with this email already exists"});
     }
-    const salt =await bcrtpt.genSalt(10);
-   const secPass=await bcrtpt.hash(req.body.password,salt);
+    const salt =await bcrypt.genSalt(10);
+   const secPass=await bcrypt.hash(req.body.password,salt);
      user = await User.create({
         name: req.body.name,
         password: secPass,

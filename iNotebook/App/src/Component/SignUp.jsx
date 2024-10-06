@@ -22,14 +22,13 @@ const SignUp = (props) => {
         },
         body: JSON.stringify({ name, email, password }),
       });
-      
       setProgress(50);
       const json = await response.json();
   
       if (json.success) {
         localStorage.setItem("token", json.authtoken);
         localStorage.setItem("name", json.name);
-        history("/login"); // Assuming you're using React Router's `useNavigate` for this.
+        history("/login");
         setProgress(100);
         showAlert("Account created successfully", "text-green-800", "bg-green-50");
       } else {
@@ -38,9 +37,11 @@ const SignUp = (props) => {
       }
     } catch (error) {
       setProgress(100);
+      console.error("Error creating account:", error); // Logs the error details
       showAlert("Error creating account", "text-red-800", "bg-red-50");
     }
   };
+  
   
 
   const onChange = (e) => {
@@ -55,7 +56,7 @@ const SignUp = (props) => {
       Sign Up Now
     </h2>
 
-    <form onSubmit={handlesubmit}>
+    <form onSubmit={handleSubmit}>
       <div className="relative z-0 w-full mb-5 group">
         <input
           type="text"
