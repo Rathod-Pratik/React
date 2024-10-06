@@ -7,32 +7,41 @@ const SignUp = (props) => {
   let history=useNavigate();
   const [credentials,setcredentials]=useState({email: "" ,password: "",name:"",cpassword:""})
 
-const handlesubmit = async (e) => {
-  e.preventDefault();
-  props.setProgress(10);
-
-  const  {name,email,password}=credentials;
-  const response = await fetch(`https://inotebookbackend-ten.vercel.app/auth/createuser`, {
-    method: "POST",
-    headers: {
-      "content-Type": "application/json",
-    },
-    body: JSON.stringify({name,email,password}),
-  });
-  props.setProgress(50);
-  const json = await response.json();
-  if(json.success){
-    //save th auth token and redirect
-    localStorage.setItem('token',json.authtoken);
-    localStorage.setItem("name" ,json.name);
-    history("/login");
-    props.setProgress(100);
-    props.showAlert("Create account successfully","text-green-800","bg-green-50");
-  }else{
-    props.setProgress(100);
-    props.showAlert("Invalid credentials","text-red-800","bg-red-50");
-  }
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { setProgress, showAlert } = props;
+    setProgress(10);
+  
+    const { name, email, password } = credentials;
+  
+    try {
+      const response = await fetch(`https://inotebookbackend-ten.vercel.app/auth/createuser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+      
+      setProgress(50);
+      const json = await response.json();
+  
+      if (json.success) {
+        localStorage.setItem("token", json.authtoken);
+        localStorage.setItem("name", json.name);
+        history("/login"); // Assuming you're using React Router's `useNavigate` for this.
+        setProgress(100);
+        showAlert("Account created successfully", "text-green-800", "bg-green-50");
+      } else {
+        setProgress(100);
+        showAlert("Invalid credentials", "text-red-800", "bg-red-50");
+      }
+    } catch (error) {
+      setProgress(100);
+      showAlert("Error creating account", "text-red-800", "bg-red-50");
+    }
+  };
+  
 
   const onChange = (e) => {
     setcredentials({ ...credentials, [e.target.name]: e.target.value });
