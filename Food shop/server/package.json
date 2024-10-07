@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "tsc -w",
-    "dev": "nodemon dist/index.js",
-    "server": "concurrently \"npm run watch\" \"npm run dev\"",
-    "start": "node dist/index.js"
+    "dev": "nodemon index.js",
+  "start": "node index.js"
   },
   "keywords": [],
   "author": "",
