@@ -1,6 +1,7 @@
-const express= require('express');
-const path =require ('path');
-const cors=require ('cors');
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -12,7 +13,9 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use("/images", express.static(path.join(__dirname, "../public/../public/images")));
+
+// Serve static files from the "public/images" directory
+app.use("/images", express.static(path.join(__dirname, "../public/images")));
 
 app.get("/", (req, res) => {
   const foodData = [
@@ -20,42 +23,42 @@ app.get("/", (req, res) => {
       name: "Boiled Egg",
       price: 10,
       text: "A simple yet nutritious start to your day.",
-      image: "../public/images/egg.png",
+      image: "/images/egg.png",  // Correct path for Vercel
       type: "breakfast",
     },
     {
       name: "RAMEN",
       price: 25,
       text: "A quick and flavorful Japanese noodle soup.",
-      image: "../public/images/ramen.png",
+      image: "/images/ramen.png", // Correct path for Vercel
       type: "lunch",
     },
     {
       name: "GRILLED CHICKEN",
       price: 45,
       text: "A lean and healthy protein option, perfect for a balanced meal.",
-      image: "../public/images/chicken.png",
+      image: "/images/chicken.png", // Correct path for Vercel
       type: "dinner",
     },
     {
       name: "CAKE",
       price: 18,
       text: "Indulge in a sweet treat, perfect for any occasion.",
-      image: "../public/images/cake.png",
+      image: "/images/cake.png", // Correct path for Vercel
       type: "breakfast",
     },
     {
       name: "BURGER",
       price: 23,
       text: "A classic American favorite, customizable to your taste.",
-      image: "../public/images/burger.png",
+      image: "/images/burger.png", // Correct path for Vercel
       type: "lunch",
     },
     {
       name: "PANCAKE",
       price: 25,
       text: "Fluffy pancakes, a delicious breakfast or brunch option.",
-      image: "../public/images/pancake.png",
+      image: "/images/pancake.png", // Correct path for Vercel
       type: "dinner",
     },
   ];
@@ -64,7 +67,4 @@ app.get("/", (req, res) => {
 });
 
 // Export the app as a serverless function
-port=5000;
-app.listen(port, () => {
-  console.log(`iNotebook listening at http://localhost:${port}`)
-})
+module.exports = app; // Change this line
