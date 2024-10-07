@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
       name: "Boiled Egg",
       price: 10,
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-      image: "/images/egg.png",
+      image: "public/images/egg.png",
       type: "breakfast",
     },
     {
