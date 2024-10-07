@@ -13,7 +13,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use("images", express.static(path.join(__dirname, "../publicimages")));
+app.use("/images", express.static(path.join(__dirname, "../public/images")));
+
 
 app.get("/", (req, res) => {
   const foodData = [
