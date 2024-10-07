@@ -1,25 +1,24 @@
 import express from "express";
 import path from "path";
 import cors from "cors";
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: ["https://my-food-zone.netlify.app"], // Allow requests only from this origin
-  methods: ["POST", "PUT", "DELETE", "GET"], // Allow only these HTTP methods
-  credentials: true, // Allow credentials to be sent (like cookies, authorization headers)
+  origin: ["https://my-food-zone.netlify.app"],
+  methods: ["POST", "PUT", "DELETE", "GET"],
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
-
 app.use("/images", express.static(path.join(__dirname, "../public/images")));
 
 app.get("/", (req, res) => {
-  console.log(path.join(__dirname, "../public"));
   const foodData = [
     {
-      name: "Boilded Egg",
+      name: "Boiled Egg",
       price: 10,
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
       image: "/images/egg.png",
@@ -65,6 +64,5 @@ app.get("/", (req, res) => {
   res.json(foodData);
 });
 
-app.listen(9000, () => {
-  console.log("Server is running on port 9000");
-});
+// Export the app as a serverless function
+export default app;

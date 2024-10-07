@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import FoodItem from "./components/FoodItem";
 
-export const URL = "http://localhost:9000";
+export const URL = "my-food-zone-delta.vercel.app";
 const App = () => {
   const [data, Setdata] = useState(null);
   const [loading, setloading] = useState(false);
