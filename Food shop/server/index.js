@@ -65,4 +65,6 @@ app.get("/", (req, res) => {
 });
 
 // Export the app as a serverless function
-export default app;
+app.listen(port, () => {
+  console.log(`iNotebook listening at http://localhost:${port}`)
+})
