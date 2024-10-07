@@ -1,6 +1,6 @@
-import express from "express";
-import path from "path";
-import cors from "cors";
+const express= require('express');
+const path =require ('path');
+const cors=require ('cors');
 
 const app = express();
 app.use(express.json());
@@ -13,7 +13,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use("/images", express.static(path.join(__dirname, "../public/images")));
+app.use("images", express.static(path.join(__dirname, "../publicimages")));
 
 app.get("/", (req, res) => {
   const foodData = [
@@ -21,42 +21,42 @@ app.get("/", (req, res) => {
       name: "Boiled Egg",
       price: 10,
       text: "A simple yet nutritious start to your day.",
-      image: "public/images/egg.png",
+      image: "publicimages/egg.png",
       type: "breakfast",
     },
     {
       name: "RAMEN",
       price: 25,
       text: "A quick and flavorful Japanese noodle soup.",
-      image: "/images/ramen.png",
+      image: "images/ramen.png",
       type: "lunch",
     },
     {
       name: "GRILLED CHICKEN",
       price: 45,
       text: "A lean and healthy protein option, perfect for a balanced meal.",
-      image: "/images/chicken.png",
+      image: "images/chicken.png",
       type: "dinner",
     },
     {
       name: "CAKE",
       price: 18,
       text: "Indulge in a sweet treat, perfect for any occasion.",
-      image: "/images/cake.png",
+      image: "images/cake.png",
       type: "breakfast",
     },
     {
       name: "BURGER",
       price: 23,
       text: "A classic American favorite, customizable to your taste.",
-      image: "/images/burger.png",
+      image: "images/burger.png",
       type: "lunch",
     },
     {
       name: "PANCAKE",
       price: 25,
       text: "Fluffy pancakes, a delicious breakfast or brunch option.",
-      image: "/images/pancake.png",
+      image: "images/pancake.png",
       type: "dinner",
     },
   ];
@@ -65,6 +65,7 @@ app.get("/", (req, res) => {
 });
 
 // Export the app as a serverless function
+port=5000;
 app.listen(port, () => {
   console.log(`iNotebook listening at http://localhost:${port}`)
 })
