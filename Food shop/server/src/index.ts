@@ -5,7 +5,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors());
+const corsOptions = {
+  origin: ["https://my-food-zone.netlify.app"], // Allow requests only from this origin
+  methods: ["POST", "PUT", "DELETE", "GET"], // Allow only these HTTP methods
+  credentials: true, // Allow credentials to be sent (like cookies, authorization headers)
+};
+
+app.use(cors(corsOptions));
 
 app.use("/images", express.static(path.join(__dirname, "../public/images")));
 
