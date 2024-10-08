@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 });
 
 // Serve static files from the "public/images" directory
-app.use("/images", express.static(path.join(__dirname, "../public/images")));
+app.use("/images", express.static(path.join(__dirname, "public/images"))); // Adjusted path
 
 // Root route for checking server status
 app.get('/', (req, res) => {
@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // Route to serve food data
-app.get("/api/food", (req, res) => { // Changed route to "/api/food"
+app.get("/api/food", (req, res) => { 
     const foodData = [
         {
             name: "Boiled Egg",
@@ -80,8 +80,9 @@ app.get("/api/food", (req, res) => { // Changed route to "/api/food"
 
 // Global error handling middleware
 app.use((err, req, res, next) => {
+    console.error('Error message:', err.message);
     console.error(err.stack);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: 'Internal Server Error', message: err.message });
 });
 
 // Start the server
