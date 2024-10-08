@@ -71,7 +71,4 @@ app.get("/", (req, res) => {
 });
 
 
- app.listen(port, () => {
-  console.log(`iNotebook listening at http://localhost:${port}`)
-})
 module.exports = app; // Change this line
