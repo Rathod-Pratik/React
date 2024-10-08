@@ -13,7 +13,11 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
+// Middleware to set Content Security Policy
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self' https://vercel.live;");
+  next();
+});
 // Serve static files from the "public/images" directory
 app.use("/images", express.static(path.join(__dirname, "../public/images")));
 
