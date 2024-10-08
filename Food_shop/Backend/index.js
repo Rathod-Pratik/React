@@ -6,7 +6,12 @@ const apiRoutes = require('./api/index');  // Import the API routes
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+const corsOptions = {
+    origin: ["https://my-food-zone.netlify.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // if you need to send cookies or auth headers
+};
+app.use(cors(corsOptions));
 // Middleware to set Content Security Policy
 app.use((req, res, next) => {
     res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self' https://vercel.live;");

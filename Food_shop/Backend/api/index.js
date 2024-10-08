@@ -3,16 +3,6 @@ const path = require('path');
 const cors = require('cors');
 
 const router = express.Router();
-
-// Middleware for CORS
-const corsOptions = {
-    origin: ["https://my-food-zone.netlify.app"],
-    methods: ["POST", "PUT", "DELETE", "GET"],
-    credentials: true,
-};
-
-router.use(cors(corsOptions));
-
 // Route to serve food data
 router.get("/food", (req, res) => { 
     const foodData = [
