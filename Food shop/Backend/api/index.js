@@ -17,6 +17,10 @@ app.use(cors(corsOptions));
 // Serve static files from the "public/images" directory
 app.use("/images", express.static(path.join(__dirname, "../public/images")));
 
+app.get('/',(res,req)=>{
+  res.end("running");
+})
+
 app.get("/", (req, res) => {
   const foodData = [
     {
