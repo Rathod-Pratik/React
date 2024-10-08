@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Button, URL } from "../App";
-
+import { Button} from "../App";
+// const URL="my-food-zone.vercel.app/api/food";
+const URL="https://my-food-zone.vercel.app";
 const FoodItem = ({ data }) => {
   return (
     <FoodItemContainer>

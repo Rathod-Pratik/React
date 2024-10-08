@@ -2,108 +2,105 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import FoodItem from "./components/FoodItem";
 
-export const URL = "https://my-food-zone-6p9u0cw1j-rathod-pratiks-projects.vercel.app/";
+export const URL = "https://my-food-zone.vercel.app/api/food";
+
 const App = () => {
-  const [data, Setdata] = useState(null);
-  const [loading, setloading] = useState(false);
-  const [Error, setError] = useState("");
-  const [FilterData, setFilterData] = useState(null);
-  const [selectedBtn, setselectedBtn] = useState("all");
+  const [data, setData] = useState([]);  // Initialize with an empty array
+  const [loading, setLoading] = useState(true);  // Start with loading true
+  const [error, setError] = useState("");
+  const [filterData, setFilterData] = useState([]);
+  const [selectedBtn, setSelectedBtn] = useState("all");
 
   useEffect(() => {
-    const FatchData = async () => {
+    const fetchData = async () => {
       try {
-        setloading(true);
         const response = await fetch(URL);
-        const ParseData = await response.json();
-        setloading(false);
-        Setdata(ParseData);
-        setFilterData(ParseData);
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+        const parsedData = await response.json();
+        setData(parsedData);
+        setFilterData(parsedData);
       } catch (error) {
-        setError("unable to fatch data");
+        setError("Unable to fetch data");
+      } finally {
+        setLoading(false);  // Ensure loading is set to false in finally block
       }
     };
-    FatchData();
+    fetchData();
   }, []);
 
-  const SearchFood = (e) => {
-    const searchvalue = e.target.value;
-    if (searchvalue === "") {
-      setFilterData(null);
+  const searchFood = (e) => {
+    const searchValue = e.target.value;
+    if (searchValue === "") {
+      setFilterData(data);  // Reset filter data if search is empty
+    } else {
+      const filtered = data.filter((food) =>
+        food.name.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      setFilterData(filtered);
     }
-    const filter = data?.filter((food) =>
-      food.name.toLowerCase().includes(searchvalue.toLowerCase())
-    );
-    setFilterData(filter);
-  };
-  const filterFood = (type) => {
-    if (type === "all") {
-      setFilterData(data);
-      setselectedBtn("all");
-      return;
-    }
-    const filter = data?.filter((food) =>
-      food.type.toLowerCase().includes(type.toLowerCase())
-    );
-    setFilterData(filter);
-    setselectedBtn(type);
   };
 
-  const FilterBtns = [
-    {
-      name: "all",
-      type: "all",
-    },
-    {
-      name: "Breakfast",
-      type: "Breakfast",
-    },
-    {
-      name: "Lunch",
-      type: "Lunch",
-    },
-    {
-      name: "Dinner",
-      type: "Dinner",
-    },
+  const filterFood = (type) => {
+    setSelectedBtn(type);
+    if (type === "all") {
+      setFilterData(data);
+    } else {
+      const filtered = data.filter((food) =>
+        food.type.toLowerCase() === type.toLowerCase()
+      );
+      setFilterData(filtered);
+    }
+  };
+
+  const filterBtns = [
+    { name: "All", type: "all" },
+    { name: "Breakfast", type: "Breakfast" },
+    { name: "Lunch", type: "Lunch" },
+    { name: "Dinner", type: "Dinner" },
   ];
-  if (Error) return <div>{Error}</div>;
-  if (loading) return <div>{loading}</div>;
+
+  if (error) return <div>{error}</div>;
+  if (loading) return <div>Loading...</div>;  // Display loading state
+
   return (
-    <>
-      <Container>
-        <Navbar>
-          <div className="nav">
-            <div className="logo">
-              <img src="/logo.svg" alt="" />
-            </div>
-            <div className="search">
-              <input
-                onChange={SearchFood}
-                type="search"
-                placeholder="Search Food...."
-              />
-            </div>
+    <Container>
+      <Navbar>
+        <div className="nav">
+          <div className="logo">
+            <img src="/logo.svg" alt="Logo" />
           </div>
-          <div className="btn">
-            {FilterBtns.map((value) => (
-              <Button
-                isselectedbtn={selectedBtn == value.type}
-                key={value.type}
-                onClick={() => filterFood(value.type)}
-              >
-                {value.name}
-              </Button>
-            ))}
+          <div className="search">
+            <input
+              onChange={searchFood}
+              type="search"
+              placeholder="Search Food...."
+              disabled={loading}  // Disable while loading
+            />
           </div>
-        </Navbar>
-        <FoodItem data={FilterData} />
-      </Container>
-    </>
+        </div>
+        <div className="btn">
+          {filterBtns.map((value) => (
+            <Button
+              isSelectedBtn={selectedBtn === value.type}
+              key={value.type}
+              onClick={() => filterFood(value.type)}
+            >
+              {value.name}
+            </Button>
+          ))}
+        </div>
+      </Navbar>
+      <FoodItem data={filterData} />
+    </Container>
   );
 };
 
 export default App;
+
+// Styled components can be defined here if needed
+
 
 const Container = styled.div`
   background-color: #323334;
