@@ -71,4 +71,4 @@ app.get("/", (req, res) => {
 });
 
 
-module.exports = app; // Change this line
+app.listen(5000,()=>console.log("Server is running"));
