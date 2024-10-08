@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import FoodItem from "./components/FoodItem";
 
-export const URL = "https://my-food-tawny.vercel.app/";
+export const URL = "react-one-gilt.vercel.app/";
 const App = () => {
   const [data, Setdata] = useState(null);
   const [loading, setloading] = useState(false);
