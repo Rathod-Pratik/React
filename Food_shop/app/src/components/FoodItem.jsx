@@ -48,6 +48,13 @@ const FoodCards = styled.div`
   padding-top: 80px;
 `;
 const FoodItems = styled.div`
+.img img{
+  object-fit: cover;
+    object-position: center;
+  border-radius: 50%;
+  height: 153px;
+  width: 153px;
+}
   width: 340px;
   height: 167px;
   border: 0.66px solid;
