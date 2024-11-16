@@ -7,39 +7,69 @@ import contextValue from './contect/notes/noteContect';
 const NoteItem = (props) => {
   const context = useContext(contextValue);
   const { deleteNode } = context;
-  const { updatenote, note } = props;
+  const { updatenote } = props;
 
   return (
     <div>
-      <div className=" w-[250px] h-[250px] mx-auto py-6 px-4 bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg dark:bg-gray-800 dark:border-gray-600 transition-shadow duration-300">
-        <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-           Title: {props.title}
-          </h5>
-        </a>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-300">
-         Desc: {props.description}
-        </p>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-300">
-         Tag: {props.tag}
-        </p>
+    <article className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6">
+      <span className="inline-block rounded bg-blue-600 p-2 text-white">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="size-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M12 14l9-5-9-5-9 5 9 5z" />
+          <path
+            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+          />
+        </svg>
+      </span>
+  
+      <a href="#">
+        <h3 className="mt-0.5 text-lg font-medium text-gray-900">
+          Title: {props.title}
+        </h3>
+      </a>
+      <p className="mt-2 text-sm text-gray-500">
+        Tag: {props.tag}
+      </p>
+  
+      <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+        Desc: {props.description}
+      </p>
 
-        <div className="flex gap-2">
-          <a
-            onClick={() => { deleteNode(props.id); }}
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-400"
-          >
-            <MdDelete />
-          </a>
-          <a
-            onClick={() => updatenote(note)}
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-400"
-          >
-            <FaRegEdit />
-          </a>
-        </div>
+  
+      <div className="flex gap-2 mt-4">
+        <a
+          onClick={() => { deleteNode(props.id); }}
+          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-400"
+        >
+          <MdDelete />
+        </a>
+        <a
+          onClick={() => updatenote(props)}
+          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-400"
+        >
+          <FaRegEdit />
+        </a>
       </div>
-    </div>
+
+        
+      <div className="flex flex-row justify-start gap-1 text-gray-500 mt-2">
+      <span className="text-[13px]">Date:{props.date}</span>
+      <span className="text-[13px]">Time : {props.time}</span>
+      </div>
+    </article>
+  </div>
+  
   );
 };
 

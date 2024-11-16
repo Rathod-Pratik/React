@@ -7,6 +7,7 @@ import Home from "./Component/Home";
 import About from "./Component/About";
 import NoteState from "./Component/contect/notes/Notestate";
 import Alert from "./Component/Alert";
+import ShowNotes from './Component/ShowNotes';
 const App = () => {
   const[alert,setalert]=useState(null);
   const showAlert=(message,color,bgcolor)=>{
@@ -27,7 +28,7 @@ const Login = lazy(() => import('./Component/Login'));
     <Router>
       <Navbar setProgress={setProgress}  />
       <LoadingBar
-        color='#c4bfbf'
+        color='#9e9999'
         progress={progress}
       />
       <Alert alert={alert}/>
@@ -36,6 +37,7 @@ const Login = lazy(() => import('./Component/Login'));
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login setProgress={setProgress} showAlert={showAlert} />} />
+        <Route path="/notes" element={<ShowNotes setProgress={setProgress} showAlert={showAlert} />} />
         <Route path="/signup" element={<SignUp setProgress={setProgress} showAlert={showAlert} />} />
       </Routes>
       </Suspense>

@@ -1,8 +1,8 @@
 const Navbar = () => {
   return (
-    <div className="my-4 flex bg-white h-[60px] rounded-lg  justify-center items-center gap-2 text-xl font-medium">
-        <img src="Images/Logo.png" alt="Logo" />
-        <h1>FireBase Contect App</h1>
+    <div className="w-[360px] my-4 flex bg-gradient-to-br from-purple-500 to-purple-600 h-[60px] rounded-full justify-center items-center gap-4 text-white text-lg font-semibold shadow-md">
+      <img src="Images/Logo.png" alt="Logo" className="w-10 h-10 rounded-full" />
+      <h1>Firebase Contact App</h1>
     </div>
   );
 };

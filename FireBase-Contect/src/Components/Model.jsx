@@ -1,23 +1,26 @@
 import { IoIosClose } from "react-icons/io";
 import React from "react";
-import {createPortal} from "react-dom"
+import { createPortal } from "react-dom";
 
-const Model = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen, onClose, children }) => {
   return createPortal(
     <>
       {isOpen && (
-        <div className="grid place-content-center absolute top-0 z-40 h-screen w-screen backdrop-blur">
-          <div className="flex flex-col relative z-50 m-auto min-h-[200px] w-[340px] bg-white p-1">
+        <div className="grid place-content-center absolute top-0 left-0 z-40 h-screen w-screen bg-gray-900 bg-opacity-50">
+          <div className="flex flex-col relative z-50 m-auto w-[340px] bg-white p-4 rounded-lg shadow-xl">
             <div className="flex justify-end">
-              <IoIosClose className="text-5xl" onClick={onClose} />
+              <IoIosClose 
+                className="text-3xl text-gray-600 cursor-pointer hover:text-gray-800 transition" 
+                onClick={onClose} 
+              />
             </div>
-              {children}
+            {children}
           </div>
-          <div className="absolute top-0 z-40 h-screen w-screen backdrop-blur"></div>
         </div>
       )}
-    </>
-  ,document.getElementById("model-root"));
+    </>,
+    document.getElementById("modal-root")
+  );
 };
 
-export default Model;
+export default Modal;

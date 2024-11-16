@@ -37,18 +37,23 @@ const Navbar = (props) => {
     <>
       <nav className="bg-transparent w-full z-50 top-0 shadow-custom">
         <div className="flex justify-between items-center px-[30px] py-[13px]">
-          <h1 className="text-4xl font-bold text-white">iNotebook</h1>
+          <h1 className="text-4xl font-bold text-black">iNotebook</h1>
 
           {/* Navigation Links */}
-          <div className={`gap-3 m-auto flex flex-col md:flex-row items-center absolute md:static left-0 w-full md:w-auto text-white transition-all duration-500 ease-in-out ${isOpen ? "!top-16 !max-h-screen py-[21px] shadow-custom bg-black" : "top-[-100vh]"}`}>
+          <div className={`gap-3 m-auto flex flex-col md:flex-row items-center absolute md:static left-0 w-full md:w-auto text-white transition-all duration-500 ease-in-out ${isOpen ? "!top-16 !max-h-screen py-[21px] shadow-custom bg-gray-300" : "top-[-100vh]"}`}>
             <ul className="overflow-visible flex flex-col md:flex-row md:gap-8 gap-5 mt-5 md:mt-0 md:ml-8">
               <li className="nav-items">
-                <Link className={`hover:border-b-2 hover:border-b-[#b6b4b4] ${location.pathname === '/' ? "text-[#b6b4b4]" : ""}`} to='/'>
+                <Link className={`hover:border-b-2 hover:border-b-[#b6b4b4] ${location.pathname === '/' ? "text-[#b6b4b4]" : "text-black"}`} to='/'>
                   Home
                 </Link>
               </li>
               <li className="nav-items">
-                <Link className={`hover:border-b-2 hover:border-b-[#b6b4b4] ${location.pathname === '/about' ? "text-[#b6b4b4]" : ""}`} to='/about'>
+                <Link className={`hover:border-b-2 hover:border-b-[#b6b4b4] ${location.pathname === '/notes' ? "text-[#b6b4b4]" : "text-black"}`} to='/notes'>
+                  Notes
+                </Link>
+              </li>
+              <li className="nav-items">
+                <Link className={`hover:border-b-2 hover:border-b-[#b6b4b4] ${location.pathname === '/about' ? "text-[#b6b4b4]" : "text-black"}`} to='/about'>
                   About
                 </Link>
               </li>
