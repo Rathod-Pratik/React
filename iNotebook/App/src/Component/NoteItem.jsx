@@ -7,7 +7,7 @@ import contextValue from './contect/notes/noteContect';
 const NoteItem = (props) => {
   const context = useContext(contextValue);
   const { deleteNode } = context;
-  const { updatenote } = props;
+  const { updatenote,note } = props;
 
   return (
     <div>
@@ -35,27 +35,27 @@ const NoteItem = (props) => {
   
       <a href="#">
         <h3 className="mt-0.5 text-lg font-medium text-gray-900">
-          Title: {props.title}
+          Title: {note.title}
         </h3>
       </a>
       <p className="mt-2 text-sm text-gray-500">
-        Tag: {props.tag}
+        Tag: {note.tag}
       </p>
   
       <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-        Desc: {props.description}
+        Desc: {note.description}
       </p>
 
   
       <div className="flex gap-2 mt-4">
         <a
-          onClick={() => { deleteNode(props.id); }}
+          onClick={() => { deleteNode(note.id); }}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-400"
         >
           <MdDelete />
         </a>
         <a
-          onClick={() => updatenote(props)}
+          onClick={() => updatenote(props.note)}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-400"
         >
           <FaRegEdit />
@@ -64,8 +64,8 @@ const NoteItem = (props) => {
 
         
       <div className="flex flex-row justify-start gap-1 text-gray-500 mt-2">
-      <span className="text-[13px]">Date:{props.date}</span>
-      <span className="text-[13px]">Time : {props.time}</span>
+      <span className="text-[13px]">Date:{note.date}</span>
+      <span className="text-[13px]">Time : {note.time}</span>
       </div>
     </article>
   </div>

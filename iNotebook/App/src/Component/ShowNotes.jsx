@@ -35,6 +35,7 @@ const ShowNotes = () => {
   
     const updatenote = (CurrentNote) => {
       ref.current.click();
+      console.log(CurrentNote._id);
       setNote({
         id: CurrentNote._id,
         edescription: CurrentNote.description,
@@ -57,17 +58,13 @@ const ShowNotes = () => {
 
     <div className=" w-[80%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
       {notes.map((note) => {
+        console.log(note);
         return (
           <NoteItem
             note={note}
-            time={note.time}
-            date={note.date}
-            title={note.title}
             updatenote={updatenote}
             key={note._id}
             id={note._id}
-            tag={note.tag}
-            description={note.description}
           />
         );
       })}
