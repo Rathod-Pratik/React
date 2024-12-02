@@ -27,14 +27,14 @@ const ShowNotes = () => {
     };
   
     const [isOpen, setIsOpen] = useState(false);
-    const ref = useRef(null); // Create a reference for the button
+    const ref = useRef(null); 
   
     const toggleModal = () => {
       setIsOpen(!isOpen);
     };
   
     const updatenote = (CurrentNote) => {
-      ref.current.click(); // This will trigger the button click
+      ref.current.click();
       setNote({
         id: CurrentNote._id,
         edescription: CurrentNote.description,
@@ -49,7 +49,7 @@ const ShowNotes = () => {
       } else {
         navigation("/login");
       }
-    }, []);
+    }, [getnotes]);
   return (
     <>
     <div>
