@@ -49,7 +49,7 @@ const ShowNotes = () => {
       } else {
         navigation("/login");
       }
-    }, [getnotes]);
+    }, []);
   return (
     <>
     <div>
