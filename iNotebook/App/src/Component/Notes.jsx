@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import contextValue from "./contect/notes/noteContect";
 import NoteItem from "./NoteItem";
-import AddNote from "./addNote";
+import AddNote from "./AddNote";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 

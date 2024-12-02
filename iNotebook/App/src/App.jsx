@@ -1,6 +1,6 @@
 import LoadingBar from 'react-top-loading-bar'
 import React, { useState ,lazy,Suspense} from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./Component/Navbar";
 import SignUp from "./Component/SignUp";
 import Home from "./Component/Home";
@@ -39,6 +39,7 @@ const Login = lazy(() => import('./Component/Login'));
         <Route path="/login" element={<Login setProgress={setProgress} showAlert={showAlert} />} />
         <Route path="/notes" element={<ShowNotes setProgress={setProgress} showAlert={showAlert} />} />
         <Route path="/signup" element={<SignUp setProgress={setProgress} showAlert={showAlert} />} />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
       </Suspense>
     </Router>
